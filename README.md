@@ -115,9 +115,7 @@ python3 pkt-summary.py examples/example.pkt --xml -o slim.xml
 # Output both JSON and Lean XML
 python3 pkt-summary.py examples/example.pkt --xml --json -o mynetwork
 ```
-```
 
----
 
 ## Topology Visualization
 
@@ -127,7 +125,6 @@ Simply drop your generated `.json` summary into one of these tools to get an ins
 
 ![Topology Visualizer Example](image.png)
 
----
 
 ## Troubleshooting
 
