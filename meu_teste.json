@@ -1,0 +1,389 @@
+{
+  "pt_version": "9.0.0.0810",
+  "device_count": 5,
+  "connection_count": 3,
+  "devices": [
+    {
+      "name": "PC0",
+      "type": "Pc",
+      "model": "PC-PT",
+      "gateway": "192.168.1.1",
+      "interfaces": [
+        {
+          "mac": "000B.BE7D.7629",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "dhcp": true,
+          "dns": "192.168.1.2",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ipv6_link_local": "FE80::20B:BEFF:FE7D:7629",
+          "ip": "",
+          "_module_model": "PT-HOST-NM-1CFE"
+        }
+      ]
+    },
+    {
+      "name": "192.168.1.2",
+      "type": "Server",
+      "model": "Server-PT",
+      "gateway": "192.168.1.1",
+      "interfaces": [
+        {
+          "mac": "00E0.A308.C1CE",
+          "ip": "192.168.1.2",
+          "mask": "255.255.255.0",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "gateway": "192.168.1.1",
+          "dns": "192.168.1.2",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ipv6_link_local": "FE80::2E0:A3FF:FE08:C1CE",
+          "_module_model": "PT-HOST-NM-1CFE"
+        }
+      ],
+      "dhcp_pools": [
+        {
+          "name": "serverPool",
+          "network": "192.168.1.0",
+          "mask": "255.255.255.0",
+          "start_ip": "192.168.1.3",
+          "end_ip": "192.168.1.255",
+          "gateway": "192.168.1.1",
+          "dns_server": "192.168.1.2",
+          "lease_time": "86400000"
+        }
+      ]
+    },
+    {
+      "name": "Power Distribution Device0",
+      "type": "Power Distribution Device",
+      "model": "Power Distribution Device"
+    },
+    {
+      "name": "Switch0",
+      "type": "Switch",
+      "model": "2960-24TT",
+      "interfaces": [
+        {
+          "mac": "00D0.58E5.5101",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5102",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5103",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5104",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5105",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5106",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5107",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5108",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5109",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510A",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510B",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510C",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510D",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510E",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.510F",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5110",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5111",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5112",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5113",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5114",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5115",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5116",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5117",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5118",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.5119",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "1000000",
+          "clockrate": "2000000",
+          "type": "eCopperGigabitEthernet",
+          "ip": "",
+          "_module_model": ""
+        },
+        {
+          "mac": "00D0.58E5.511A",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "1000000",
+          "clockrate": "2000000",
+          "type": "eCopperGigabitEthernet",
+          "ip": "",
+          "_module_model": ""
+        }
+      ]
+    },
+    {
+      "name": "PC1",
+      "type": "Pc",
+      "model": "PC-PT",
+      "interfaces": [
+        {
+          "mac": "0006.2ADE.A5A0",
+          "enabled": true,
+          "speed_mbps": "100",
+          "bandwidth": "100000",
+          "full_duplex": true,
+          "clockrate": "2000000",
+          "type": "eCopperFastEthernet",
+          "ipv6_link_local": "FE80::206:2AFF:FEDE:A5A0",
+          "ip": "",
+          "_module_model": "PT-HOST-NM-1CFE"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from_device": "save-ref-id:4573194481770283309",
+      "from_port": "FastEthernet0",
+      "to_device": "save-ref-id:12802392553068590782",
+      "to_port": "FastEthernet0/1",
+      "cable_type": "eStraightThrough"
+    },
+    {
+      "from_device": "save-ref-id:12802392553068590782",
+      "from_port": "FastEthernet0/2",
+      "to_device": "save-ref-id:8348624189025724424",
+      "to_port": "FastEthernet0",
+      "cable_type": "eStraightThrough"
+    },
+    {
+      "from_device": "save-ref-id:18113936776344887010",
+      "from_port": "FastEthernet0",
+      "to_device": "save-ref-id:12802392553068590782",
+      "to_port": "FastEthernet0/3",
+      "cable_type": "eStraightThrough"
+    }
+  ],
+  "address_summary": [
+    {
+      "device": "192.168.1.2",
+      "ip": "192.168.1.2",
+      "mask": "255.255.255.0",
+      "gateway": "192.168.1.1"
+    }
+  ]
+}

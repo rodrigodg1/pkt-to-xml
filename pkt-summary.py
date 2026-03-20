@@ -480,13 +480,19 @@ def main():
         help="Input file: .xml (from pka2xml -d) or .pkt/.pka (requires --pka2xml)",
     )
     parser.add_argument(
-        "--strip",
+        "--strip", "--xml",
         action="store_true",
+        dest="xml",
         help=(
             "Output a stripped XML instead of a JSON summary. "
             "Removes all visual/UI bloat but keeps full network config detail. "
             "The result can still be re-encrypted back to .pkt with pka2xml -e."
         ),
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output JSON summary (this is the default behavior if no format flags are provided).",
     )
     parser.add_argument(
         "-o", "--output",
@@ -517,7 +523,54 @@ def main():
         orig_size = os.path.getsize(args.input)
 
     # ── Process ───────────────────────────────────────────────────────────────
-    if args.strip:
+    do_xml = args.xml
+    do_json = args.json
+    if not do_xml and not do_json:
+        do_json = True  # default
+        
+    if do_xml and do_json:
+        # Generate JSON summary
+        summary = make_json_summary(root)
+        indent = args.indent if args.indent > 0 else None
+        output_json = json.dumps(summary, indent=indent, ensure_ascii=False)
+        
+        # Generate Lean XML (modifies root in-place)
+        strip_xml(root)
+        ET.indent(root, space="  ")
+        output_xml = ET.tostring(root, encoding="unicode")
+        
+        if args.output == "-":
+            print("=== JSON SUMMARY ===")
+            print(output_json)
+            print("\n=== STRIPPED XML ===")
+            print(output_xml)
+        else:
+            base = args.output
+            if base.lower().endswith((".xml", ".json", ".pkt", ".pka")):
+                base = base.rsplit(".", 1)[0]
+                
+            path_json = base + ".json"
+            path_xml = base + ".xml"
+            with open(path_json, "w", encoding="utf-8") as f:
+                f.write(output_json)
+            with open(path_xml, "w", encoding="utf-8") as f:
+                f.write(output_xml)
+                
+            sz_json = os.path.getsize(path_json)
+            sz_xml = os.path.getsize(path_xml)
+            ratio_xml = int(100 * sz_xml / orig_size) if orig_size else 0
+            ratio_json = int(100 * sz_json / orig_size) if orig_size else 0
+            
+            print(
+                f"[pkt-summary] Generated both formats:\n"
+                f"  Input:  {orig_size:>10,} bytes\n"
+                f"  JSON:   {sz_json:>10,} bytes  ({ratio_json}% of input) -> {path_json}\n"
+                f"  XML:    {sz_xml:>10,} bytes  ({ratio_xml}% of input) -> {path_xml}",
+                file=sys.stderr,
+            )
+        return
+
+    elif do_xml:
         strip_xml(root)
         ET.indent(root, space="  ")
         output = ET.tostring(root, encoding="unicode")
@@ -537,7 +590,7 @@ def main():
             f.write(output)
         out_size = os.path.getsize(out_path)
         ratio = int(100 * out_size / orig_size) if orig_size else 0
-        mode  = "stripped XML" if args.strip else "JSON summary"
+        mode  = "stripped XML" if args.xml else "JSON summary"
         print(
             f"[pkt-summary] {mode}: {out_path}\n"
             f"  Input:  {orig_size:>10,} bytes\n"

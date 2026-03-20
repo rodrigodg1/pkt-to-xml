@@ -43,19 +43,19 @@ Three output modes, all accepting `.pkt`, `.pka`, or a pre-decoded `.xml`:
 
 | Mode | Flag | Output | Size vs full XML |
 |------|------|--------|-----------------|
-| JSON summary | *(default)* | devices, IPs, cables, IOS config | ~100–2000x smaller |
-| Topology XML | `--topo` | concise XML with only configured data | ~100x smaller |
-| Lean XML | `--strip` | full XML minus UI state / animations | ~10x smaller |
+| JSON summary | `--json` (default) | devices, IPs, cables, IOS config | ~100–2000x smaller |
+| Lean XML | `--xml` (or `--strip`) | full XML minus UI state / animations | ~10x smaller |
+| Both formats | `--xml --json` | Both JSON and Lean XML files | dependent |
 
 ```bash
 # JSON summary (stdout)
 python3 pkt-summary.py examples/example.pkt
 
-# Topology XML (stdout)
-python3 pkt-summary.py examples/example.pkt --topo
-
 # Lean XML saved to file
-python3 pkt-summary.py examples/example.pkt --strip -o slim.xml
+python3 pkt-summary.py examples/example.pkt --xml -o slim.xml
+
+# Output both JSON and Lean XML to files (-o specifies the base name)
+python3 pkt-summary.py examples/example.pkt --xml --json -o mynetwork
 ```
 
 **When to use each tool:**
@@ -101,45 +101,31 @@ python3 pkt-summary.py examples/example.pkt
 }
 ```
 
-**Topology XML**
-```bash
-python3 pkt-summary.py examples/example.pkt --topo
-```
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<TOPOLOGY version="9.0.0.0810">
-  <DEVICES>
-    <DEVICE name="Router0" type="Router" model="1841">
-      <INTERFACE name="FastEthernet0/0" ip="192.168.1.1" mask="255.255.255.0" status="up"/>
-      <INTERFACE name="FastEthernet0/1" ip="10.0.0.1" mask="255.255.255.252"/>
-      <CONFIG>
-hostname Router0
-interface FastEthernet0/0
- ip address 192.168.1.1 255.255.255.0
- no shutdown
-      </CONFIG>
-    </DEVICE>
-    <DEVICE name="Switch0" type="Switch" model="2960-24TT"/>
-    <DEVICE name="PC0" type="Pc" model="PC-PT">
-      <INTERFACE name="FastEthernet0" ip="192.168.1.2" mask="255.255.255.0" status="up"/>
-    </DEVICE>
-  </DEVICES>
-  <CABLES>
-    <CABLE from="Router0/FastEthernet0/0" to="Switch0/FastEthernet0/1" type="Straight-Through"/>
-    <CABLE from="PC0/FastEthernet0" to="Switch0/FastEthernet0/2" type="Straight-Through"/>
-  </CABLES>
-</TOPOLOGY>
-```
-
 **Save to file** — prints size reduction ratio:
 ```bash
-python3 pkt-summary.py examples/example.pkt           -o summary.json
-# Saved JSON summary to summary.json
-# Size: 789,598 bytes -> 482 bytes  (1638.2x smaller)
+# JSON summary output (default)
+python3 pkt-summary.py examples/example.pkt  -o summary.json
+# Note: The -o flag explicitly defines the output path but does not change the format.
+# If you run `python3 pkt-summary.py examples/example.pkt -o topo.xml` without `--xml`,
+# it will still generate a JSON file, saving it under the name `topo.xml`.
 
-python3 pkt-summary.py examples/example.pkt --topo    -o topo.xml
-python3 pkt-summary.py examples/example.pkt --strip   -o slim.xml
+# Lean XML output
+python3 pkt-summary.py examples/example.pkt --xml -o slim.xml
+
+# Output both JSON and Lean XML
+python3 pkt-summary.py examples/example.pkt --xml --json -o mynetwork
 ```
+```
+
+---
+
+## Topology Visualization
+
+Because the `pkt-summary.py` output is a standard and structured JSON file, you can easily visualize your entire network topology using existing external JSON node visualization tools (such as [JSON Crack](https://jsoncrack.com)).
+
+Simply drop your generated `.json` summary into one of these tools to get an instant, interactive graph of your devices, properties, and connections!
+
+![Topology Visualizer Example](image.png)
 
 ---
 
